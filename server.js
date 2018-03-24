@@ -42,4 +42,12 @@ server.post('/get-name', (req, res) => {
   res.redirect(`/named-compliment?fname=${fname}&lname=${lname}`)
 })
 
+server.get('/blogs', (req, res) => {
+  res.sendFile(path.join(__dirname, './blogs/index.html'))
+})
+
+server.get('/blogs/:name', (req, res) => {
+  const blogName = req.params.name
+  res.sendFile(path.join(__dirname, `./blogs/blog/${blogName}`))
+})
 module.exports = server
